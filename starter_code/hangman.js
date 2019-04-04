@@ -1,24 +1,48 @@
-var hangman;
+let hangman;
 
-// function Hangman() {
+function Hangman() {
+    this.words = [ 'saxofone', 'piano', 'guitarra', 'gaita'];
+    this.secretWord = wordRandom ;
+    this.letters = [] ;
+    this.guessedLetter ='';
+    this.errorsLeft = 10;
+}
+ let wordRandom ='';
+Hangman.prototype.getWord = function () {
+   wordRandom = this.words[Math.floor(this.words.length * Math.random ())];
+  return wordRandom;
+};
 
-// }
 
-// Hangman.prototype.getWord = function () {
+let codeKey = Hangman.prototype.checkIfLetter = function (keyCode) {
+ if(keyCode >= 64 && keyCode <= 123) {
+   return true;
+ } else {
+   return false;
+ }
+   
+};
 
-// };
+Hangman.prototype.checkClickedLetters = function (key) {
+  if (key === codeKey){
+    return true;
+  } else {
+  return false;
+  }
 
-// Hangman.prototype.checkIfLetter = function (keyCode) {
+};
 
-// };
+Hangman.prototype.addCorrectLetter = function (i) {
+  for (i = 0; i < wordRandom.length; i += 1) {
+    if (wordRandom[i] === guessedLetter){
+      return this.guessedLetter = wordRandom[i] + guessedLetter;
+    } else {
+      return false
+    }
+  }
+  
 
-// Hangman.prototype.checkClickedLetters = function (key) {
-
-// };
-
-// Hangman.prototype.addCorrectLetter = function (i) {
-
-// };
+};
 
 // Hangman.prototype.addWrongLetter = function (letter) {
 
